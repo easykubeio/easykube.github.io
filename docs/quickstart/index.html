@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>快速入门 - easyKube</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="https://easykubeio.github.io/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.6aa5eecd4ca7c47fb2ca9b0775a7bd787e3e64a2eadf0fef8c9f924498f49127.css">
+  
+
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-首页">
+      <a href="/">
+        <span>首页</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-特性">
+      <a href="/docs/features/">
+        <span>特性</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-文档">
+      <a href="/docs/">
+        <span>文档</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-下载">
+      <a href="/docs/download/">
+        <span>下载</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://easykubeio.github.io/"><img alt="Logo" src="/images/logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://easykubeio.github.io/"><img alt="Logo" src="/images/logo-mobile.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-首页">
+      <a href="/">
+        <span>首页</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-特性">
+      <a href="/docs/features/">
+        <span>特性</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-文档">
+      <a href="/docs/">
+        <span>文档</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-下载">
+      <a href="/docs/download/">
+        <span>下载</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+
+    
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      <div class="row">
+        <div class="col-12 col-md-3 mb-3">
+          <div class="sidebar">
+            
+<div class="docs-menu">
+  <h4>Docs</h4>
+  <ul>
+    
+    <li class="">
+      <a href="https://easykubeio.github.io/docs/about/">关于</a>
+    </li>
+    
+    <li class="">
+      <a href="https://easykubeio.github.io/docs/features/">功能特性</a>
+    </li>
+    
+    <li class="active ">
+      <a href="https://easykubeio.github.io/docs/quickstart/">快速入门</a>
+    </li>
+    
+    <li class="">
+      <a href="https://easykubeio.github.io/docs/download/">下载</a>
+    </li>
+    
+  </ul>
+</div>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          
+<h1 class="title">快速入门</h1>
+<div class="content ">
+  <p>本文档的目的是帮助您快速了解和使用easyKube。包括几个主要部分：硬件需求、集群规划、系统安装、初始化集群等。</p>
+<h2 id="a-nametopa目录"><!-- raw HTML omitted --><!-- raw HTML omitted -->目录</h2>
+<ul>
+<li><a href="#%E7%A1%AC%E4%BB%B6%E9%9C%80%E6%B1%82">硬件需求</a></li>
+<li><a href="#%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92">集群规划</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85">系统安装</a></li>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%9B%86%E7%BE%A4">初始化集群</a></li>
+</ul>
+<hr>
+<h3 id="a-name硬件需求a硬件需求"><!-- raw HTML omitted --><!-- raw HTML omitted -->硬件需求</h3>
+<p>以下是easyKube集群节点的推荐硬件需求，这些配置是经验所得，实际配置取决于具体需求。</p>
+<ol>
+<li>最小配置</li>
+</ol>
+<ul>
+<li>CPU：2核（虚拟）</li>
+<li>内存：4GB</li>
+<li>硬盘：≥10GB</li>
+<li>网卡：1个千兆网卡</li>
+</ul>
+<ol start="2">
+<li>推荐配置</li>
+</ol>
+<p>Master节点：</p>
+<ul>
+<li>CPU：≥4核</li>
+<li>内存：≥16GB</li>
+<li>硬盘：2块或以上，每块容量≥64GB</li>
+<li>网卡：2个或以上千兆网卡</li>
+</ul>
+<p>Worker节点：</p>
+<ul>
+<li>CPU：≥4核</li>
+<li>内存：≥16GB</li>
+<li>硬盘：1块≥64GB</li>
+<li>网卡：2个或以上千兆网卡</li>
+</ul>
+<h3 id="集群规划">集群规划</h3>
+<p>我们将集群分为开发/测试环境和生产环境两个类型。通过下面的例子可以体现两种类型的区别。</p>
+<ul>
+<li>开发/测试环境</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">项目\节点</th>
+<th align="left">Master节点</th>
+<th align="left">Worker节点1</th>
+<th align="left">Worker节点2</th>
+<th align="left">Worker节点3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">宿主机主机名</td>
+<td align="left">master</td>
+<td align="left">worker1</td>
+<td align="left">worker2</td>
+<td align="left">worker3</td>
+</tr>
+<tr>
+<td align="left">宿主机网络</td>
+<td align="left">192.168.2.10/24</td>
+<td align="left">192.168.2.11/24</td>
+<td align="left">192.168.2.12/24</td>
+<td align="left">192.168.2.13/24</td>
+</tr>
+<tr>
+<td align="left">集群名称</td>
+<td align="left">easykube</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">POD网络</td>
+<td align="left">172.16.0.0/24</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">Service网络</td>
+<td align="left">10.96.0.0/16</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">Registry域名</td>
+<td align="left">ekdockerhub.com</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">Registry密码</td>
+<td align="left">password</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>生产环境</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">项目\节点</th>
+<th align="left">Master节点1</th>
+<th align="left">Master节点2</th>
+<th align="left">Master节点3</th>
+<th align="left">Worker节点1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">宿主机主机名</td>
+<td align="left">master1</td>
+<td align="left">master2</td>
+<td align="left">master3</td>
+<td align="left">worker1</td>
+</tr>
+<tr>
+<td align="left">宿主机网络</td>
+<td align="left">192.168.2.10/24</td>
+<td align="left">192.168.2.11/24</td>
+<td align="left">192.168.2.12/24</td>
+<td align="left">192.168.2.13/24</td>
+</tr>
+<tr>
+<td align="left">虚拟IP</td>
+<td align="left">192.168.2.9</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">集群名称</td>
+<td align="left">easykube</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">POD网络</td>
+<td align="left">172.16.0.0/24</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">Service网络</td>
+<td align="left">10.96.0.0/16</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">Registry域名</td>
+<td align="left">ekdockerhub.com</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">Registry密码</td>
+<td align="left">password</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">*</td>
+</tr>
+<tr>
+<td align="left">宿主机硬盘</td>
+<td align="left">≥2个</td>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>* 表示与其他节点配置项目相同。- 表示节点不需要配置此项目。</p>
+</blockquote>
+<blockquote>
+<p>Registry域名在集群仅有一个Master节点时自动解析为Master节点宿主机IP地址。在集群中具有3个Master节点时则解析为配置的虚拟IP地址。</p>
+</blockquote>
+<blockquote>
+<p>生产环境中推荐配置3个Master节点，每个Master节点配置至少2块硬盘。其中一块将作为系统盘，其他硬盘可配置为GlusterFS的数据盘。这3个Master节点将成为GlusterFS集群。GlusterFS存储空间可存储Registry镜像和Kubernetes持久化数据。</p>
+</blockquote>
+<blockquote>
+<p>Master节点默认也可作为Worker节点使用，也可根据实际需求关闭此特性。</p>
+</blockquote>
+<p><a href="#top">[Top]</a></p>
+<h3 id="系统安装">系统安装</h3>
+<ol>
+<li>下载并制作USB启动盘</li>
+</ol>
+<p>首先在<a href="/docs/download">下载</a>页面下载easyKube最新版本。</p>
+<p>物理环境中可使用U盘引导安装。私有云环境可将iso镜像上传至私有云中直接引导安装。</p>
+<p>制作U盘启动需借助UltraISO软件。</p>
+<p>打开 <strong>UltraISO</strong> 点击 <strong>启动-&gt;写入硬盘映像&hellip;</strong> 然后点击 <strong>写入</strong> 。如图所示：</p>
+<p><img src="/images/usb.png" alt="Super wide"></p>
+<ol start="2">
+<li>安装过程</li>
+</ol>
+<p>easyKube采用自动化安装方式，安装过程中需要对系统进行简单设置。</p>
+<blockquote>
+<p>使用 <strong>TAB</strong> 键切换选项。 <strong>↑</strong> <strong>↓</strong> 键移动光标，<strong>空格</strong> 或 <strong>回车</strong> 键确认。</p>
+</blockquote>
+<ul>
+<li>选择选择系统安装盘，选择 <strong>Next</strong> 继续，</li>
+</ul>
+<p><img src="/images/disk.png" alt="Super wide"></p>
+<ul>
+<li>设置主机名，选择 <strong>Next</strong> 继续，</li>
+</ul>
+<p><img src="/images/hostname.png" alt="Super wide"></p>
+<ul>
+<li>选择网卡，选择 <strong>Next</strong> 继续，</li>
+</ul>
+<p><img src="/images/network.png" alt="Super wide"></p>
+<ul>
+<li>设置IP地址，选择 <strong>Next</strong> 继续，</li>
+</ul>
+<p><img src="/images/ipaddress.png" alt="Super wide"></p>
+<ul>
+<li>设置掩码，选择 <strong>Next</strong> 继续，</li>
+</ul>
+<p><img src="/images/mask.png" alt="Super wide"></p>
+<ul>
+<li>设置网关，选择 <strong>Next</strong> 继续，</li>
+</ul>
+<p><img src="/images/gateway.png" alt="Super wide"></p>
+<ul>
+<li>设置DNS，选择 <strong>Next</strong> 继续，</li>
+</ul>
+<p><img src="/images/dns.png" alt="Super wide"></p>
+<ul>
+<li>确认配置信息，选择 <strong>Comfirm</strong> 确认继续，</li>
+</ul>
+<p><img src="/images/confirm.png" alt="Super wide"></p>
+<ul>
+<li>硬盘格式化警告。选择 <strong>Yes</strong> 后进入安装过程。</li>
+</ul>
+<p><img src="/images/confirm2.png" alt="Super wide"></p>
+<ul>
+<li>安装过程中请稍加等待&hellip;</li>
+</ul>
+<p><img src="/images/progress.png" alt="Super wide"></p>
+<ul>
+<li>安装完成后，选择 <strong>OK</strong> 键重启。</li>
+</ul>
+<p><img src="/images/finish.png" alt="Super wide"></p>
+<ul>
+<li>重启完成后可看到图形化控制台界面。</li>
+</ul>
+<p><img src="/images/console.png" alt="Super wide"></p>
+<blockquote>
+<p>接下来通过浏览器访问 <strong>http://ipaddress:5005</strong> 进行集群初始化。</p>
+</blockquote>
+<p><a href="#top">[Top]</a></p>
+<h3 id="初始化集群">初始化集群</h3>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li class="zerostatic"><a href="https://www.easykube.cn">www.easykube.cn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.1237ff71925bb8625c97a9af8db4c54525258bedfd7c47493daaff723bea755e.js"></script>
+  
+
+  
+  
+  
+    
+  
+
+
+</body>
+
+</html>
