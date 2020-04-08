@@ -146,6 +146,7 @@
 <li><a href="#%E9%9B%86%E7%BE%A4%E8%A7%84%E5%88%92">集群规划</a></li>
 <li><a href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85">系统安装</a></li>
 <li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%9B%86%E7%BE%A4">初始化集群</a></li>
+<li><a href="#Registry%E4%BB%93%E5%BA%93">Registry仓库</a></li>
 </ul>
 <hr>
 <h3 id="a-name硬件需求a硬件需求"><!-- raw HTML omitted --><!-- raw HTML omitted -->硬件需求</h3>
@@ -178,9 +179,9 @@
 </ul>
 <h3 id="集群规划">集群规划</h3>
 <p>我们将集群分为开发/测试环境和生产环境两个类型。通过下面的例子可以体现两种类型的区别。</p>
-<ul>
+<ol>
 <li>开发/测试环境</li>
-</ul>
+</ol>
 <table>
 <thead>
 <tr>
@@ -243,9 +244,9 @@
 </tr>
 </tbody>
 </table>
-<ul>
+<ol start="2">
 <li>生产环境</li>
-</ul>
+</ol>
 <table>
 <thead>
 <tr>
@@ -404,6 +405,163 @@
 </blockquote>
 <p><a href="#top">[Top]</a></p>
 <h3 id="初始化集群">初始化集群</h3>
+<ol>
+<li>配置向导</li>
+</ol>
+<p>easyKube安装完成后，还需要对其进行初始化集群才能正常工作。通过浏览器访问 <strong>http://ipaddress:5005</strong> 打开easyKube集群配置向导。</p>
+<p><img src="/images/index.png" alt="Super wide"></p>
+<p>配置向导有四个选项：</p>
+<ul>
+<li>
+<p>创建单Master集群</p>
+<p>建议开发/测试环境时选择此项。当集群中仅有一个Master节点时，一旦此节点发生故障，则可能导致整个集群不可用。</p>
+</li>
+<li>
+<p>创建3Master集群</p>
+<p>建议生产环境时选择此项。启用三个节点的Master，配合easyKube内置的VIP和负载均衡功能来实现Master节点的高可用。即使其中一个Master故障也不会影响整个集群的正常使用。可选的，也可将此节点内的其他硬盘配置为分布式文件系统。为Registry存储镜像和Kubernetes持久化提供存储空间。</p>
+</li>
+<li>
+<p>作为Master加入集群</p>
+<p>将当前节点作为Master加入到现有集群中。仅当在第一个节点选择 <strong>创建3Master集群</strong> 时选择此项才能生效。</p>
+</li>
+<li>
+<p>作为Worker加入集群</p>
+<p>将当前阶段作为Worker加入到现有集群中。Worker仅作为计算节点不参与集群管理。</p>
+</li>
+</ul>
+<ol start="2">
+<li>创建单Master集群</li>
+</ol>
+<ul>
+<li>设置集群名称，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create11.png" alt="Super wide"></p>
+<blockquote>
+<p>在同一网络中集群名称不可重复。</p>
+</blockquote>
+<ul>
+<li>设置Kubernetes网络，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create12.png" alt="Super wide"></p>
+<blockquote>
+<p>POD网络、Service网络、宿主机网络不可相同。</p>
+</blockquote>
+<ul>
+<li>设置Registry仓库，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create13.png" alt="Super wide"></p>
+<blockquote>
+<p>Registry仓库用户名默认为admin</p>
+</blockquote>
+<ul>
+<li>确认集群信息，点击 <strong>确定</strong> 创建集群。</li>
+</ul>
+<p><img src="/images/create14.png" alt="Super wide"></p>
+<blockquote>
+<p>单Master节点创建完成后，后续节点只能选择 <strong>作为Worker加入集群</strong> 选项。</p>
+</blockquote>
+<ol start="3">
+<li>创建3Master集群</li>
+</ol>
+<ul>
+<li>设置集群名称，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create31.png" alt="Super wide"></p>
+<blockquote>
+<p>在同一网络中集群名称不可重复。</p>
+</blockquote>
+<ul>
+<li>设置虚拟IP，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create32.png" alt="Super wide"></p>
+<blockquote>
+<p>VIP须与宿主机网络保持在同一网段。</p>
+</blockquote>
+<blockquote>
+<p>VIP仅在Master节点间生效。</p>
+</blockquote>
+<ul>
+<li>设置Kubernetes网络，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create33.png" alt="Super wide"></p>
+<blockquote>
+<p>POD网络、Service网络、宿主机网络不可相同。</p>
+</blockquote>
+<ul>
+<li>设置Registry仓库，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create34.png" alt="Super wide"></p>
+<blockquote>
+<p>Registry仓库用户名默认为admin</p>
+</blockquote>
+<ul>
+<li>配置GlasterFS存储，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/create35.png" alt="Super wide"></p>
+<blockquote>
+<p>可选项。如第一个Master节点配置了此项，其他Master节点也必须配置。GlasterFS默认副本数为2。</p>
+</blockquote>
+<ul>
+<li>确认集群信息，点击 <strong>确定</strong> 创建集群。</li>
+</ul>
+<p><img src="/images/create36.png" alt="Super wide"></p>
+<blockquote>
+<p>3Master节点创建完成后，还需要加入两个Master节点集群才能正常工作。因此需要先选择 <strong>作为Master加入集群</strong> 选项。集群完全正常后才能选择 <strong>作为Worker加入集群</strong> 。</p>
+</blockquote>
+<ol start="4">
+<li>作为Master加入集群</li>
+</ol>
+<ul>
+<li>设置第一个Master节点的IP地址，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/jm1.png" alt="Super wide"></p>
+<ul>
+<li>配置GlasterFS存储，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/jm2.png" alt="Super wide"></p>
+<blockquote>
+<p>可选项。如第一个Master节点配置了此项，其他Master节点也必须配置。</p>
+</blockquote>
+<ul>
+<li>
+<ul>
+<li>确认集群信息，点击 <strong>确定</strong> 加入到现有集群。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/jm3.png" alt="Super wide"></p>
+<ol start="4">
+<li>作为Worker加入集群</li>
+</ol>
+<ul>
+<li>设置第一个Master节点的IP地址，点击 <strong>下一步</strong> ，</li>
+</ul>
+<p><img src="/images/jw1.png" alt="Super wide"></p>
+<ul>
+<li>
+<ul>
+<li>确认集群信息，点击 <strong>确定</strong> 加入到现有集群。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/jw2.png" alt="Super wide"></p>
+<h3 id="registry仓库">Registry仓库</h3>
+<p>easyKube内置了Registry仓库 <strong>（DockerHUB）</strong> ，集群初始化完成后可通过浏览器访问URL：<strong>http://ipaddress:5001</strong> 查看仓库详情。</p>
+<blockquote>
+<p>单Master时可通过Master主机IP访问。3Master时即可通过每台Master主机访问也可通过虚拟IP地址访问。</p>
+</blockquote>
+<ul>
+<li>Registry默认命名空间library</li>
+</ul>
+<p><img src="/images/library.png" alt="Super wide"></p>
+<ul>
+<li>Registry默认命名空间system</li>
+</ul>
+<p><img src="/images/system.png" alt="Super wide"></p>
+<ul>
+<li>镜像标签</li>
+</ul>
+<p><img src="/images/tag.png" alt="Super wide"></p>
 </div>
 </div>
 
