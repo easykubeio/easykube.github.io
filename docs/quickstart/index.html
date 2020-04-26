@@ -342,7 +342,7 @@
 <p>Registry域名在集群仅有一个Master节点时自动解析为Master节点宿主机IP地址。在集群中具有3个Master节点时则解析为配置的虚拟IP地址。</p>
 </blockquote>
 <blockquote>
-<p>生产环境中推荐配置3个Master节点，每个Master节点配置至少2块硬盘。其中一块将作为系统盘，其他硬盘可配置为GlusterFS的数据盘。这3个Master节点将成为GlusterFS集群。GlusterFS存储空间可存储Registry镜像和Kubernetes持久化数据。</p>
+<p>生产环境中推荐配置3个Master节点，每个Master节点配置至少2块硬盘。其中一块将作为系统盘，其他硬盘可配置为GlusterFS的数据盘。GlusterFS存储空间可存储Registry镜像和Kubernetes持久化数据。</p>
 </blockquote>
 <blockquote>
 <p>Master节点默认也可作为Worker节点使用，也可根据实际需求关闭此特性。</p>
@@ -430,15 +430,15 @@
 </li>
 <li>
 <p>创建3Master集群</p>
-<p>建议生产环境时选择此项。启用三个节点的Master，配合easyKube内置的VIP和负载均衡功能来实现Master节点的高可用。即使其中一个Master故障也不会影响整个集群的正常使用。可选的，也可将此节点内的其他硬盘配置为分布式文件系统。为Registry存储镜像和Kubernetes持久化提供存储空间。</p>
+<p>建议生产环境时选择此项。启用三个节点的Master，配合easyKube内置的VIP和负载均衡功能来实现Master节点的高可用。即使其中一个Master故障也不会影响整个集群的正常使用。</p>
 </li>
 <li>
 <p>作为Master加入集群</p>
-<p>将当前节点作为Master加入到现有集群中。仅当在第一个节点选择 <strong>创建3Master集群</strong> 时选择此项才能生效。</p>
+<p>将当前节点作为Master加入到现有集群。仅当在第一个节点选择 <strong>创建3Master集群</strong> 时选择此项才能生效。</p>
 </li>
 <li>
 <p>作为Worker加入集群</p>
-<p>将当前阶段作为Worker加入到现有集群中。Worker仅作为计算节点不参与集群管理。</p>
+<p>将当前节点作为Worker加入到现有集群。Worker仅作为计算节点不参与集群管理。</p>
 </li>
 </ul>
 <ol start="2">
@@ -497,7 +497,7 @@
 </ul>
 <p><img src="/images/create33.png" alt="Super wide"></p>
 <blockquote>
-<p>POD网络、Service网络、宿主机网络不可相同。</p>
+<p>POD网络、Service网络、宿主机网络不能在同一网段。</p>
 </blockquote>
 <ul>
 <li>设置Registry仓库，点击 <strong>下一步</strong> ，</li>
@@ -511,7 +511,7 @@
 </ul>
 <p><img src="/images/create35.png" alt="Super wide"></p>
 <blockquote>
-<p>可选项。如第一个Master节点配置了此项，其他Master节点也必须配置。GlasterFS默认副本数为2。</p>
+<p>每个Master节点必须配置。GlasterFS默认副本数为2。</p>
 </blockquote>
 <ul>
 <li>确认集群信息，点击 <strong>确定</strong> 创建集群。</li>
