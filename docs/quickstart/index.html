@@ -339,13 +339,10 @@
 <p>* 表示与其他节点配置项目相同。- 表示节点不需要配置此项目。</p>
 </blockquote>
 <blockquote>
-<p>Registry域名在集群仅有一个Master节点时自动解析为Master节点宿主机IP地址。在集群中具有3个Master节点时则解析为配置的虚拟IP地址。</p>
+<p>Registry域名在集群仅有一个Master节点时解析为Master节点宿主机IP地址。在集群中具有3个Master节点时则解析为虚拟IP地址。</p>
 </blockquote>
 <blockquote>
 <p>生产环境中推荐配置3个Master节点，每个Master节点配置至少2块硬盘。其中一块将作为系统盘，其他硬盘可配置为GlusterFS的数据盘。GlusterFS存储空间可存储Registry镜像和Kubernetes持久化数据。</p>
-</blockquote>
-<blockquote>
-<p>Master节点默认也可作为Worker节点使用，也可根据实际需求关闭此特性。</p>
 </blockquote>
 <p><a href="#top">[Top]</a></p>
 <h3 id="系统安装">系统安装</h3>
@@ -434,7 +431,7 @@
 </li>
 <li>
 <p>作为Master加入集群</p>
-<p>将当前节点作为Master加入到现有集群。仅当在第一个节点选择 <strong>创建3Master集群</strong> 时选择此项才能生效。</p>
+<p>将当前节点作为Master加入到现有集群。仅当在第一个节点选择 <strong>创建3Master集群</strong> 时选择此项。</p>
 </li>
 <li>
 <p>作为Worker加入集群</p>
@@ -444,6 +441,10 @@
 <ol start="2">
 <li>创建单Master集群</li>
 </ol>
+<ul>
+<li>easyKube安装完成后，通过浏览器访问主机IP <strong>http://ipaddress:5005</strong> 打开easyKube集群配置向导。选择 <strong>创建单Master集群</strong> 选项。</li>
+</ul>
+<p><img src="/images/easyKube1.png" alt="Super wide"></p>
 <ul>
 <li>设置集群名称，点击 <strong>下一步</strong> ，</li>
 </ul>
@@ -469,12 +470,20 @@
 <li>确认集群信息，点击 <strong>确定</strong> 创建集群。</li>
 </ul>
 <p><img src="/images/create14.png" alt="Super wide"></p>
+<ul>
+<li>等待系统处理完成。</li>
+</ul>
+<p><img src="/images/p1.png" alt="Super wide"></p>
 <blockquote>
-<p>单Master节点创建完成后，后续节点只能选择 <strong>作为Worker加入集群</strong> 选项。</p>
+<p>单Master节点创建完成后，后续节点需要选择 <strong>作为Worker加入集群</strong> 选项。</p>
 </blockquote>
 <ol start="3">
 <li>创建3Master集群</li>
 </ol>
+<ul>
+<li>easyKube安装完成后，通过浏览器访问第一个节点主机IP <strong>http://ipaddress:5005</strong> 打开easyKube集群配置向导。选择 <strong>创建3Master集群</strong> 选项。</li>
+</ul>
+<p><img src="/images/easyKube3.png" alt="Super wide"></p>
 <ul>
 <li>设置集群名称，点击 <strong>下一步</strong> ，</li>
 </ul>
@@ -524,6 +533,10 @@
 <li>作为Master加入集群</li>
 </ol>
 <ul>
+<li>easyKube安装完成后，通过浏览器访问第二个节点主机IP <strong>http://ipaddress:5005</strong> 打开easyKube集群配置向导。选择 <strong>作为Master加入集群</strong> 选项。</li>
+</ul>
+<p><img src="/images/easyKube-as-master.png" alt="Super wide"></p>
+<ul>
 <li>设置第一个Master节点的IP地址，点击 <strong>下一步</strong> ，</li>
 </ul>
 <p><img src="/images/jm1.png" alt="Super wide"></p>
@@ -532,33 +545,36 @@
 </ul>
 <p><img src="/images/jm2.png" alt="Super wide"></p>
 <blockquote>
-<p>可选项。如第一个Master节点配置了此项，其他Master节点也必须配置。</p>
+<p>Master节点也必须配置分布式存储磁盘。</p>
 </blockquote>
-<ul>
-<li>
 <ul>
 <li>确认集群信息，点击 <strong>确定</strong> 加入到现有集群。</li>
 </ul>
-</li>
-</ul>
 <p><img src="/images/jm3.png" alt="Super wide"></p>
+<ul>
+<li>重复此步骤，向集群中加入第三个Master节点。然后等待集群初始化完成，就可以加入worker节点了。</li>
+</ul>
 <ol start="4">
 <li>作为Worker加入集群</li>
 </ol>
+<ul>
+<li>easyKube安装完成后，通过浏览器访问节点主机IP <strong>http://ipaddress:5005</strong> 打开easyKube集群配置向导。选择 <strong>作为Worker加入集群</strong> 选项。</li>
+</ul>
+<p><img src="/images/easyKube-as-worker.png" alt="Super wide"></p>
 <ul>
 <li>设置第一个Master节点的IP地址，点击 <strong>下一步</strong> ，</li>
 </ul>
 <p><img src="/images/jw1.png" alt="Super wide"></p>
 <ul>
-<li>
-<ul>
 <li>确认集群信息，点击 <strong>确定</strong> 加入到现有集群。</li>
 </ul>
-</li>
-</ul>
 <p><img src="/images/jw2.png" alt="Super wide"></p>
+<ul>
+<li>系统正确处理完成，提示成功信息。</li>
+</ul>
+<p><img src="/images/pw2.png" alt="Super wide"></p>
 <h3 id="registry仓库">Registry仓库</h3>
-<p>easyKube内置了Registry仓库 <strong>（DockerHUB）</strong> ，集群初始化完成后可通过浏览器访问URL：<strong>http://ipaddress:5001</strong> 查看仓库详情。</p>
+<p>easyKube内置了Registry仓库，集群初始化完成后可通过浏览器访问URL：<strong>http://ipaddress:5001</strong> 查看仓库详情。</p>
 <blockquote>
 <p>单Master时可通过Master主机IP访问。3Master时即可通过每台Master主机访问也可通过虚拟IP地址访问。</p>
 </blockquote>
@@ -589,7 +605,7 @@
       <div class="col-12">
         <div class="sub-footer-inner">
           <ul>
-            <li class="zerostatic"><a href="https://www.easykube.cn">www.easykube.cn</a></li>
+            <li class="zerostatic"><a href="https://easykubeio.github.io">easykubeio.github.io</a></li>
           </ul>
         </div>
       </div>
